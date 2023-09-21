@@ -30,8 +30,9 @@ def dashboard(request):
         user = request.user
         full_name = user.get_full_name()
         gps = user.groups.all() # getting model of group which user have 
+        ip = request.session.get('ip' , 0)
 
-        return render(request , 'Blogpost/dashboard.html' ,{'datas' : b , 'user' : user , 'fname' : full_name , 'groups' : gps})
+        return render(request , 'Blogpost/dashboard.html' ,{'datas' : b , 'user' : user , 'fname' : full_name , 'groups' : gps , 'ip' : ip})
     else:
         return HttpResponseRedirect("/singin/")
 
