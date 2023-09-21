@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate , login
 from django.contrib.auth.models import Group
 from django.contrib.auth import logout as Blog_out
 from .forms import create_post 
+from django.core.cache import cache 
 # Create your views here.
 
 
@@ -30,8 +31,10 @@ def dashboard(request):
         user = request.user
         full_name = user.get_full_name()
         gps = user.groups.all() # getting model of group which user have 
+        # cache for login count 
+        ct = cache.get('count' , version=user.pk)
 
-        return render(request , 'Blogpost/dashboard.html' ,{'datas' : b , 'user' : user , 'fname' : full_name , 'groups' : gps})
+        return render(request , 'Blogpost/dashboard.html' ,{'datas' : b , 'user' : user , 'fname' : full_name , 'groups' : gps , 'ct':ct})
     else:
         return HttpResponseRedirect("/singin/")
 
