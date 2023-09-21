@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'Blogpost/css/all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'Blogpost/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'Blogpost/css/styile.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <div class="container-fluid bg-dark">
+        {% include 'Blogpost/navbar.html' %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% block msg %}
+
+                {% endblock msg %}
+            </div>
+        </div>
+        <div class="row">
+            {% block side  %}
+           
+            {% endblock side  %}
+            {% block content  %}{% endblock content  %}
+        </div>
+    </div>
+
+    {% comment %} <button class="btn btn-warning "> click </button> {% endcomment %}
+
+    <script src="{% static 'Blogpost/js/all.min.js'%}"></script>
+    <script src="{% static 'Blogpost/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'Blogpost/js/jquery.js'%}"></script>
+    <script src="{% static 'Blogpost/js/popper.js'%}"></script>
+    
+</body>
+</html>

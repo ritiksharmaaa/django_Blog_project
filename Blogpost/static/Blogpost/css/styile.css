@@ -1,0 +1,62 @@
+body{
+    background-color : rgb(74 , 74 , 74);
+    color : antiquewhite ;
+}
+
+.jumbo-color{
+
+    background-color: rgb(83, 81, 81);
+    /* border : 2px solid white ; */
+}
+
+form-control , form-control:focus{
+    color : rgb(177 , 168 , 168);
+}
+/* 
+form-control{
+    background-color: rgb;
+} */
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    /* background-color:rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important; */
+}
+
+
+.ch-login{
+    width : 40% ;
+    margin-left : 25% ;
+    margin-top: 23px ;;
+    
+}
+
+.ch{
+    width : 40% ;
+    margin-left : 25% ;
+    
+}
+
+.ch-signup{
+    width : 40% ;
+    margin-left : 25% ;
+    
+}
+
+.center{
+    margin-left: 48% ;
+    font-weight: 500;
+}
+
+.link{
+    text-decoration:None;
+    color: white ;
+}
+/* .btn-back{
+    background-color: black ;
+    opacity: 65% ;
+    color:white ;
+    border : none;
+}
+.btn-back:hover{
+    background-color: none ; 
+} */

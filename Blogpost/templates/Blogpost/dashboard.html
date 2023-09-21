@@ -1,0 +1,114 @@
+{% extends 'Blogpost/base.html' %}
+{% load static %}
+
+
+{% block msg  %}
+
+{% if messages %}
+
+{% for message  in  messages %}
+<p 
+{% if message.tags %} class="alert alert-{{message.tags}} mt-5"{% endif %} >{{message}}</p>
+
+{% endfor %}
+{% endif %}
+
+{% endblock msg  %}
+
+
+{% block side  %}
+<div class="col-sm-2 offset-1 text-white my-5 text-center">
+    <h4 class=""> Profile </h4>
+    <h5>{{fname}}</h5>
+    
+    {% for gps in groups  %}
+    <p>{{gps.name}}</p>
+        
+    {% endfor %}
+    
+        
+
+</div>
+{% endblock side  %}
+
+
+
+
+{% block content %}
+
+
+<div class="col-sm-10 offset-1">
+    <h3 class="text-white  "> Dashboard Page </h3>
+    <a class="btn btn-success  mb-3" href="{% url 'create-post' %}"><span class="material-symbols-outlined">
+        add
+        </span></a>   
+</div>
+<div class="row">
+   
+
+    <div class="col-sm-10 offset-1">
+        <h4 class="text-center alert alert-info "> Show Student Informations </h4>
+        
+        {% if datas  %}
+        
+        <table class="table table-hover p " >
+            <tr>
+                
+                <th scope="col">id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            
+                
+            </tr>
+            <thead>
+                <tbody>
+                    
+                    <tr>
+                        
+                        {% for st  in datas  %}
+                        <th scope="row">{{st.id}}
+                        </th>
+                        <td>{{st.title}}</td>
+                       <td>{{st.desc|truncatewords:17}}</td>
+                    
+                         <td class="text-center">
+                            <a href="/post-update/{{st.id}}" class="btn btn-warning btn-sm">Edit</a>
+                            
+                            {% if perms.Blogpost.delete_post %}
+                                
+                            
+                        <form action="/post-delete/{{st.id}}/" method="post" class="d-inline" >{% csrf_token %}
+                        <input type="submit" class="btn btn-danger btn-sm"  value="Delete">
+                            
+                            {% comment %} <a href="/post-delete/{{st.id}}/" class="btn btn-danger btn-sm">Delete</a> {% endcomment %}
+                        </form>
+                            {% endif %}
+                         </td>
+        
+                    
+                            
+                         
+                         
+                         
+                        </tr>
+                        {% endfor %}
+</tbody>
+
+            </thead>
+
+
+        </table>
+         
+        {% else %}
+        <p class="alert alert-danger ">
+            NO Data Founde !!
+
+        </p>
+        {% endif %}
+            
+    </div>
+</div>
+
+
+{% endblock content %}

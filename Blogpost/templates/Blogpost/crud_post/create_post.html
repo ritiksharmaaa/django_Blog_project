@@ -1,0 +1,50 @@
+{% extends 'Blogpost/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+{% if messages %}
+
+{% for message  in  messages %}
+<p 
+{% if message.tags %} class="alert alert-{{message.tags}} mt-5"{% endif %} >{{message}}</p>
+
+{% endfor %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+<div class="col-sm-8 align-items-center">
+    <h3 class="text-white my-5"> Create Post  </h3>
+   <form action="" method="post" novalidate>
+    {% csrf_token %}
+    
+    
+    {% for fm  in form   %}
+    <div class="form-group">
+    {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}
+</div>
+    {% endfor %}
+    
+    {% if form.non_field_errors %}
+    
+    {% for error in form.non_field_errors  %}
+    <p class="alert alert-info  my-4 mt-5">{{error|striptags}}</p>
+        
+    {% endfor %}
+    {% endif %}
+    <input  class="btn btn-primary mt-3"type="submit" value="submit">
+    <a class="btn btn-primary mt-3"  href="/dashboard/"> Back to Dashbaord </a>
+   </form>
+    
+</div>
+
+{% endblock content %}
