@@ -36,6 +36,7 @@ urlpatterns = [
     path('post-create/', views.createPost , name="create-post"),
     path('post-update/<int:id>/', views.update_post , name="dashboard-update-post"),
     path('post-delete/<int:id>/', views.delete_post , name="dashboard-delete-post"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # D:\programing\django\project\Blog>
