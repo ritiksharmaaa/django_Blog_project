@@ -40,3 +40,7 @@ urlpatterns = [
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # D:\programing\django\project\Blog>
+
+# Only in development, serve static files using Django's development server
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
